@@ -6,6 +6,12 @@ import { notificationSetter, notificationClearer } from '../reducers/notificatio
 const AnecdoteList = (props) => {
     const anecdotes = useSelector(state => state.anecdotes)
     anecdotes.sort((a, b) => b.votes - a.votes )
+    const filterWord = useSelector(state => state.filterWord)
+    const anecdotesToShow = anecdotes.filter(
+        a => a.content.toLowerCase()
+        .indexOf(filterWord.toLowerCase()) > -1)
+
+    console.log(filterWord)
     
     const dispatch = useDispatch()
     const vote = (id) => {
@@ -18,7 +24,7 @@ const AnecdoteList = (props) => {
     }
 
     return (
-        anecdotes.map(anecdote =>
+        anecdotesToShow.map(anecdote =>
             <div key={anecdote.id}>
             <div>
                 {anecdote.content}
