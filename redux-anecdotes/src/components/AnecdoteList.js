@@ -5,6 +5,7 @@ import { notificationSetter, notificationClearer } from '../reducers/notificatio
 
 const AnecdoteList = (props) => {
     const anecdotes = useSelector(state => state.anecdotes)
+    console.log('anecdotes', anecdotes)
     anecdotes.sort((a, b) => b.votes - a.votes )
     const filterWord = useSelector(state => state.filterWord)
     const anecdotesToShow = anecdotes.filter(
