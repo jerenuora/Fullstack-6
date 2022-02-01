@@ -15,9 +15,9 @@ const AnecdoteList = (props) => {
     console.log(filterWord)
     
     const dispatch = useDispatch()
-    const vote = (id) => {
-        console.log('vote', id)
-        dispatch(newVote(id))
+    const vote = (id, content, votes) => {
+        console.log('vote', id, content)
+        dispatch(newVote(id, content, votes))
         const voted = anecdotes.find(a => a.id === id)
         dispatch(notificationSetter(`Voted ${voted.content}`))
         setTimeout(() => dispatch(notificationClearer('')),5000)
@@ -32,7 +32,7 @@ const AnecdoteList = (props) => {
             </div>
             <div>
                 has {anecdote.votes}
-                <button onClick={() => vote(anecdote.id)}>vote</button>
+                <button onClick={() => vote(anecdote.id, anecdote.content,anecdote.votes)}>vote</button>
             </div>
             </div>
 
