@@ -1,7 +1,7 @@
 import React from 'react'
 import { newAnecdote } from '../reducers/anecdoteReducer'
 import { notificationSetter } from '../reducers/notificationReducer'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 const AnecdoteForm = (props) => {
 
