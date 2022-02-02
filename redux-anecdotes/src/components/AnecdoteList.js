@@ -15,12 +15,11 @@ const AnecdoteList = (props) => {
     console.log(filterWord)
     
     const dispatch = useDispatch()
-    const vote = (id, content, votes) => {
-        console.log('vote', id, content)
-        dispatch(newVote(id, content, votes))
-        const voted = anecdotes.find(a => a.id === id)
-        dispatch(notificationSetter(`Voted ${voted.content}`))
-        setTimeout(() => dispatch(notificationClearer('')),5000)
+    const vote = (anecdote) => {
+        console.log('vote', anecdote.id, anecdote.content)
+        dispatch(newVote(anecdote))
+        const voted = anecdotes.find(a => a.id === anecdote.id)
+        dispatch(notificationSetter(`Voted ${voted.content}`, 5))
 
     }
 
@@ -32,7 +31,7 @@ const AnecdoteList = (props) => {
             </div>
             <div>
                 has {anecdote.votes}
-                <button onClick={() => vote(anecdote.id, anecdote.content,anecdote.votes)}>vote</button>
+                <button onClick={() => vote(anecdote)}>vote</button>
             </div>
             </div>
 
