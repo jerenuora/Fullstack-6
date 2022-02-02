@@ -16,14 +16,12 @@ export const notificationSetter = (notification, time) => {
         type: 'SET_NOTIFICATION',
         notification
     })
-    setTimeout(() => dispatch(notificationClearer('')),time*1000)
-}
-}
-export const notificationClearer = notification => {
-    return {
+    setTimeout(() => dispatch(
+        {
         type: 'SET_NOTIFICATION',
-        notification
-    }
+        notification: ''
+    }), time * 1000)
+}
 }
 
 export default notificationReducer
